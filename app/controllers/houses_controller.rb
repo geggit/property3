@@ -3,9 +3,20 @@ class HousesController < ApplicationController
 
   # GET /houses
   # GET /houses.json
-  def index
-    @houses = House.all
-  end
+  #def index
+    #@houses = House.all
+  #end
+
+
+
+def index
+  @search = House.search(params[:q])
+  @houses = @search.result
+end
+
+
+
+
 
   # GET /houses/1
   # GET /houses/1.json

@@ -27,4 +27,4 @@ end
 gem 'execjs' 
 gem 'therubyracer'
 
-gem "meta_search"
+gem "ransack"
