@@ -10,11 +10,19 @@ class HousesController < ApplicationController
 
 
 def index
-  @search = House.search(params[:q])
-  @houses = @search.result
+   #@search = House.search(params[:q])
+   #@houses = @search.result
+
+  @q = House.search(params[:q])
+  @houses = @q.result(distinct: true)
 end
 
 
+
+def search
+  index
+  render :index
+end
 
 
 

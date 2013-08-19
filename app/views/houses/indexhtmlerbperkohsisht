@@ -1,0 +1,60 @@
+<h1>Properties list</h1>
+
+<style> 
+div
+{
+transform:rotate(0deg);
+-ms-transform:rotate(0deg); /* IE 9 */
+-webkit-transformrotate(0deg); /* Safari and Chrome */
+
+position:absolute;
+left:100px;
+top:150px;
+
+}
+</style>
+
+<div>
+  <%= search_form_for @q, url: search_houses_path, html: { method: :post } do |f| %>
+    <%= f.condition_fields do |c| %>
+    <%= render "condition_fields", f: c %>
+  <% end %>
+</div>
+
+<div class="oftable">
+<table id="houses">
+  <tr>
+    <th><%= sort_link @q, :location, "Location" %></th>
+    <th><%= sort_link @q, :beds, "Beds" %></th>
+    <th><%= sort_link @q, :price, "Price" %></th>
+  </tr>
+<% @houses.each do |houses| %>
+  <tr>
+    <td><%= link_to(houses.location, houses) %></td>
+    <td><%= houses.beds %></td>
+    <td><%= number_to_currency(houses.price) %></td>
+  </tr>
+<% end %>
+</table>
+
+  
+
+<%= search_form_for @q do |f| %>
+  <%= f.label :location_cont %>
+  <%= f.text_field :location_cont %>
+  <%= f.submit %>
+<% end %>
+
+
+
+</div>
+
+<div class="actions"><%= f.submit "Search" %></div> 
+<% end %>
+
+
+
+<div>
+<%= link_to 'New House', new_house_path %>
+</div>
+
