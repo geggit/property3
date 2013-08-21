@@ -1,6 +1,8 @@
 class HousesController < ApplicationController
   before_action :set_house, only: [:show, :edit, :update, :destroy]
 
+  respond_to :json, :html, :jpg, :xml
+
   # GET /houses
   # GET /houses.json
   #def index
@@ -15,8 +17,21 @@ def index
 
   @q = House.search(params[:q])
   @houses = @q.result(distinct: true)
+
+#@houses = House.all
+#render :json => @houses.to_json
 end
 
+def jsonindex
+   #@search = House.search(params[:q])
+   #@houses = @search.result
+
+  #@q = House.search(params[:q])
+  #@houses = @q.result(distinct: true)
+
+  @houses = House.all
+  render :json => @houses.to_json
+end
 
 
 def search

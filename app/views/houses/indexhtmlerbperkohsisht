@@ -55,6 +55,6 @@ top:150px;
 
 
 <div>
-<%= link_to 'New House', new_house_path %>
+link_to "JSON results", :controller => "jsonindex"
 </div>
 

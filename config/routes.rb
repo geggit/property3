@@ -1,13 +1,21 @@
 Property3::Application.routes.draw do
   #resources :houses
 
+
+
   resources :houses do
     collection do
       match 'search' => 'houses#search', via: [:get, :post], as: :search
     end
   end
 
-  root :to => 'houses#index'
+  #get "/houses/jsonindex " => "houses#jsonindex", :as => 'jsonindex'
+
+get :controller => "houses", :action => 'jsonindex'
+
+  root :to => 'houses#index' 
+
+    
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
